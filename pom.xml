@@ -291,21 +291,6 @@
                             </execution>
                         </executions>
                     </plugin>
-			
-			<plugin>
-			    <groupId>org.jacoco</groupId>
-			    <artifactId>jacoco-maven-plugin</artifactId>
-			    <version>0.8.6-SNAPSHOT</version>
-				<executions>
-				    <execution>
-					<id>report-aggregate</id>
-					<phase>verify</phase>
-					<goals>
-					    <goal>report-aggregate</goal>
-					</goals>
-				    </execution>
-				</executions>
-			</plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-site-plugin</artifactId>
@@ -315,6 +300,11 @@
                                 <plugin>
                                     <artifactId>maven-project-info-reports-plugin</artifactId>
                                     <version>2.7</version>
+                                </plugin>
+                                <plugin>
+                                    <groupId>org.jacoco</groupId>
+                                    <artifactId>jacoco-maven-plugin</artifactId>
+                                    <version>0.7.2.201409121644</version>
                                 </plugin>
                                 <plugin>
                                     <groupId>org.apache.maven.plugins</groupId>
@@ -428,10 +418,16 @@
             <reporting>
                 <plugins>
                     <plugin>
-			  <groupId>org.jacoco</groupId>
-			  <artifactId>jacoco-maven-plugin</artifactId>
-			  <version>0.8.6-SNAPSHOT</version>
- 		    </plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>cobertura-maven-plugin</artifactId>
+                        <version>${cobertura.version}</version>
+                        <configuration>
+                            <formats>
+                                <format>html</format>
+                                <format>xml</format>
+                            </formats>
+                        </configuration>
+                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-pmd-plugin</artifactId>
